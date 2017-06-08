@@ -1,0 +1,24 @@
+<h1><%= @nameofplace %></h1>
+
+<h3>Current Weather: <%= @current_weather["temp"] %> Degrees - <%= @current_weather["text"] %></h3>
+
+
+<hr>
+
+<h3>Five Day Forcast</h3>
+
+<% @fiveday_forecast[0...5].each do |day| %>
+<strong><%= day["day"] %> : <%= day["date"] %></strong><br>
+High: <%= day["high"] %><br>
+Low: <%= day["low"] %><br>
+Conditions: <%= day["text"] %><br><br>
+  <% end %>
+
+<hr>
+
+<%= form_tag "/search", method: :post do %>
+Enter City: <input type = "text" name = "city">
+Enter State: <input type="text" name = "state">
+<input type="submit" value = "Search">
+
+  <% end %>
